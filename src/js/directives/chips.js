@@ -167,7 +167,9 @@
             /*Extract the chip-tmpl and compile inside the chips directive scope*/
             var rootDiv = angular.element('<div></div>');
             var tmplStr = iElement.html();
-            tmplStr = tmplStr.substr(tmplStr.indexOf('<chip-tmpl'),tmplStr.indexOf('</chip-tmpl>')-('</chip-tmpl>').length);
+            var start = tmplStr.indexOf('<chip-tmpl');
+            var end = tmplStr.indexOf('</chip-tmpl>') + ('</chip-tmpl>').length;
+            tmplStr = tmplStr.substr(tmplStr.indexOf('<chip-tmpl'), end - start);
             iElement.find('chip-tmpl').remove();
             var tmpl = angular.element(tmplStr);
             var chipTextNode, chipBindedData, chipBindedDataSuffix;
